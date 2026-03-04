@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Scene } from "../types/story";
 
@@ -7,6 +7,15 @@ interface SceneDisplayProps {
 }
 
 const SceneDisplay: React.FC<SceneDisplayProps> = ({ scene }) => {
+  const [imgError, setImgError] = useState(false);
+
+  // Reset error state when scene changes
+  React.useEffect(() => {
+    setImgError(false);
+  }, [scene.id]);
+
+  const fallbackImage = "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1000";
+
   return (
     <AnimatePresence mode="wait">
       <motion.div
@@ -17,10 +26,11 @@ const SceneDisplay: React.FC<SceneDisplayProps> = ({ scene }) => {
         transition={{ duration: 0.5 }}
         className="space-y-8"
       >
-        <div className="relative aspect-video overflow-hidden rounded-2xl border border-white/10 shadow-2xl shadow-cyan-500/10">
+        <div className="relative aspect-video overflow-hidden rounded-2xl border border-white/10 shadow-2xl shadow-cyan-500/10 bg-gray-900">
           <img
-            src={scene.image}
+            src={imgError ? fallbackImage : scene.image}
             alt={scene.title}
+            onError={() => setImgError(true)}
             className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />

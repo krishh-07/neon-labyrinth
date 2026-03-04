@@ -31,6 +31,16 @@ export const storyData: Record<string, Scene> = {
       { text: "Keep walking and blend in", nextSceneId: "blend_in" }
     ]
   },
+  blend_in: {
+    id: "blend_in",
+    title: "Lost in the Crowd",
+    description: "You pull your hood up and merge with the sea of commuters. You overhear two corporate suits talking about a breach in Sector 7. They seem nervous.",
+    image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=1000",
+    choices: [
+      { text: "Follow the suits", nextSceneId: "subway_run" },
+      { text: "Head to the docks", nextSceneId: "docks" }
+    ]
+  },
   hide_crates: {
     id: "hide_crates",
     title: "Narrow Escape",
@@ -51,6 +61,26 @@ export const storyData: Record<string, Scene> = {
       { text: "Jump off at the next dark tunnel", nextSceneId: "tunnel_jump" }
     ]
   },
+  technician_disguise: {
+    id: "technician_disguise",
+    title: "The Imposter",
+    description: "With the jacket on, you look like you belong. You walk right past the enforcers. One of them nods at you. You reach the central hub.",
+    image: "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?auto=format&fit=crop&q=80&w=1000",
+    choices: [
+      { text: "Hack a terminal", nextSceneId: "nyx_reveal", requiredItem: "Encrypted Chip" },
+      { text: "Exit to the docks", nextSceneId: "docks" }
+    ]
+  },
+  docks: {
+    id: "docks",
+    title: "The Rust Docks",
+    description: "The smell of salt and ozone fills the air. Massive cargo ships hover above the water. You see a shady figure leaning against a stack of containers.",
+    image: "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&q=80&w=1000",
+    choices: [
+      { text: "Approach the figure", nextSceneId: "ask_vendor" },
+      { text: "Look for a way out", nextSceneId: "tunnel_jump" }
+    ]
+  },
   ask_vendor: {
     id: "ask_vendor",
     title: "Dangerous Questions",
@@ -69,6 +99,16 @@ export const storyData: Record<string, Scene> = {
     choices: [
       { text: "Show her the chip", nextSceneId: "nyx_reveal", requiredItem: "Encrypted Chip" },
       { text: "Buy a drink and listen", nextSceneId: "listen_in" }
+    ]
+  },
+  listen_in: {
+    id: "listen_in",
+    title: "Eavesdropping",
+    description: "You sit at the bar and listen. You hear whispers of a 'Project Chimera' being moved to the orbital station tonight. Nyx is watching you.",
+    image: "https://images.unsplash.com/photo-1514525253361-bee871871771?auto=format&fit=crop&q=80&w=1000",
+    choices: [
+      { text: "Approach Nyx", nextSceneId: "nyx_reveal", requiredItem: "Encrypted Chip" },
+      { text: "Leave the bar", nextSceneId: "main_street" }
     ]
   },
   nyx_reveal: {
